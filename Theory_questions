@@ -82,12 +82,12 @@ sync.WaitGroup нельзя копировать    |        wg := sync.WaitGrou
 
 12) Что выведет данная программа и почему?
 
-                        |       func main() {  
-                        |           n := 0  
-Область видимость n     |           if true {  
-внутри if ограничена    |               n := 1  
+Область видимость n     |       func main() {  
+внутри if ограничена    |           n := 0  
+                        |           if true {  
+Ответ: 0                |               n := 1  
                         |               n++  
-Ответ: 0                |           }  
+                        |           }  
                         |           fmt.Println(n)  
                         |       }  
 
@@ -106,7 +106,7 @@ sync.WaitGroup нельзя копировать    |        wg := sync.WaitGrou
 
 14) Что выведет данная программа и почему?
 
-                                                        |          func main() {  
+Действия в анон функциях не влияют на ориг              |          func main() {  
                                                         |           slice := []string{"a", "a"}  
  slice = append(slice, "a") глобально не сработает      |  
  slice[0] = "b" глобально не сработает                  |           func(slice []string) {  
